@@ -1,0 +1,19 @@
+applications:
+ - name: fulfillment-framework-backend
+  # buildpack: 'https://github.gapinc.com/platform-services/java-buildpack.git#v4.6-gap.2'
+   buildpack: 'https://github.com/cloudfoundry/java-buildpack.git'
+   path: ./build/libs/fulfillment-framework-backend-0.0.1-SNAPSHOT.war
+   instances: 1
+   timeout: 180
+   env:
+    JBP_CONFIG_OPENJDK: 'verion: 1.8.+'
+    CF_TARGET: https://api.sys.cfdev.phx.gaptech.com
+    CF_ORG: Transportation
+    CF_SPACE: development
+    CF_APP_NAME: fulfillment-framework-backend
+    CF_URI: https://fulfillment-framework-backend_development.apps.cfdev.phx.gaptech.com
+    CF_MEMORY: 1024MB
+    ARTIFACT_EXTENSION: war
+    ENV_SPRING_PROFILES_ACTIVE: development
+    SPRING_PROFILES_ACTIVE: development
+    eureka.client.serviceUrl.defaultZone: https://fulfillment-eureka-service.apps.cfdev.phx.gaptech.com/eureka/
